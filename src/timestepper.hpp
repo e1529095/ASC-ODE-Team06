@@ -46,7 +46,24 @@ namespace ASC_ode
       auto ynew = std::make_shared<IdentityFunction>(rhs->dimX());
       m_equ = ynew - m_yold - m_tau * m_rhs;
     }
+    
+ class ImprovedEuler : public TimeStepper
+  {
+    Vector<> m_vecf;
+    Vector<> m_ytilde;
+  public:
+    ImprovedEuler(std::shared_ptr<NonlinearFunction> rhs) 
+    : TimeStepper(rhs), m_vecf(rhs->dimF()), m_ytilde(rhs->dimX()) {}
+    void DoStep(double tau, VectorView<double> y) override
+    {
+      this->m_rhs->evaluate(y, m_vecf);
+      m_ytilde = y + (tau/2.0) * m_vecf;
 
+      this->m_rhs->evaluate(m_ytilde, m_vecf);
+      y += tau * m_vecf;
+    }
+  };
+    
     void DoStep(double tau, VectorView<double> y) override
     {
       m_yold->set(y);
