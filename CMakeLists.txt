@@ -17,3 +17,8 @@ target_link_libraries (test_ode PUBLIC nanoblas)
 add_executable (demo_autodiff demos/demo_autodiff.cpp)
 target_link_libraries (demo_autodiff PUBLIC nanoblas)
 
+add_executable (massspring demos/exercise17_massspring.cpp)
+target_link_libraries(massspring PUBLIC nanoblas)
+
+add_executable(circuit demos/exercise17_circuit.cpp)
+target_link_libraries(circuit PUBLIC nanoblas)
