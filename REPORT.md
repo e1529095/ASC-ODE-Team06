@@ -51,3 +51,26 @@ The Improved Euler method demonstrated superior performance:
 The comparison highlights the importance of choosing an appropriate integration scheme for ODEs. While the Explicit Euler method is simple to implement, it is unreliable for conservative systems like the mass-spring model due to energy drift.
 
 We should also note that the Improved Euler method, by evaluating the derivative at the midpoint, achieves much higher accuracy and preserves the geometric properties (circular phase orbits) of the system significantly better.
+
+----------------------------------------------------------------------------------------
+
+**Notes for the Report and Plots for Exercise 19**
+
+To complete the assignment, we added the file exercise19_runge_kutta.cpp to the project, in which we reproduced the Gaussian and Rado implementations for the Runge-Kutta methods. The calculation results are placed in the Results folder, and the plots are in the Plots folder.
+The experiment showed that the results of highly accurate methods on short time scales are very difficult to visually distinguish.
+
+This occurs for a number of reasons:
+
+1. Rado methods are L-stable. This means that they introduce "numerical damping" (artificial viscosity). The system loses energy, but very slowly because the time step is quite small.
+
+2. Gaussian methods are symplectic (conservative). They preserve the system's energy. Even at a scale of 0.00001, they show no damping. Gauss-Legendre (3 stages) has a 6th-order accuracy. The error decays as N to the minus sixth power. For 100 steps, the error is negligible (about 10 to the minus 12th power), so the graph looks like an analytical solution.
+
+3. The 3-stage Radau method has a 5th-order accuracy. It is so accurate that the decay over such a short time interval is negligible and merges with the energy conservation line.
+
+**Our solution for visually demonstrating the error**
+
+When choosing 100 steps, all the lines in the phase portrait merge into a perfect circle. Since the energy loss at the green Radau IIA line (2 stages) was only 0.07%, the radius of the circle has decreased by a microscopic amount, imperceptible to the naked eye on a graph with a scale of -1 to 1. The spiral is there, but the turns are too close together.
+
+Higher-order methods (5th and 6th) are so good that at 100 steps they provide a nearly analytical solution. Therefore, we reduced the precision (by reducing the number of steps) to see the differences in the nature of the methods.
+
+By reducing the number of steps to 25, we can visually detect at least a minimal difference in the results of these highly accurate methods from the ideal analytical solution.
