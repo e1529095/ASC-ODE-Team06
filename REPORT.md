@@ -54,6 +54,44 @@ We should also note that the Improved Euler method, by evaluating the derivative
 
 ----------------------------------------------------------------------------------------
 
+**Notes for the Report and Plots for Exercise 17.4.1**
+
+In the exercise 17.4.1 we did the simulation of the Mass-Spring system, and it clearly demonstrates the stability characteristics of the three methods applied to a conservative problem.
+
+We implemented the methods in exercise17_massspring.cpp file and put results and plots in the appropriate folders.
+
+**Results and discussion**
+
+The Improved Euler method (red line), being an explicit scheme, exhibits a lack of long-term stability for this oscillatory system. As seen in the phase portraits (especially with steps = 200), the solution spirals outward and the total energy grows unbounded.
+
+This confirms that explicit methods can introduce artificial energy into a system, making them unsuitable for long-term simulations of orbital or frictionless mechanics without extremely small time steps.
+
+In contrast, the Implicit Euler method (green line) demonstrates strong L-stability. While it is unconditionally stable and does not "explode" like the explicit method, it introduces significant numerical damping.
+
+The phase portrait spirals inward rapidly, and the energy plot shows a decay to zero, effectively acting as if the system had heavy friction. While this method is safe from instability, it is physically inaccurate for modeling energy-preserving systems because it kills the oscillations too quickly.
+
+The Crank-Nicolson method (blue line) proves to be the optimal choice for the Mass-Spring system. It is A-stable but does not possess the strong damping properties of L-stable methods. Consequently, it perfectly preserves the periodic nature of the system: the phase portrait remains a closed circle, and the total energy remains constant at 0.5 over time.
+
+This illustrates why Crank-Nicolson is the standard for conservative problems where preserving the system's energy is a priority over damping out high frequencies.
+
+**Notes for the Report and Plots for Exercise 17.4.2**
+
+In the exercise 17.4.2 we did the RC Circuit simulation, and highlights the concept of stiffness in ODEs. 
+
+We implemented the methods in exercise17_circuit.cpp file and put results and plots in the appropriate folders.
+
+**Results and discussion**
+
+With the chosen parameters (R = 1000, C = 10 to the power of -6), the system has a very fast reaction time. When using a time step that is large relative to this reaction time, the Improved Euler method fails catastrophically, with the voltage crashing to negative infinity. This "explosion" occurs because the explicit method's stability domain was violated by the large step size.
+
+**Summary for exercise 17**
+
+In summary, these exercises confirm that while explicit methods like Improved Euler are simple to implement, they are dangerous for stiff systems (like the circuit) and conservative systems (like the spring) unless the time step is vanishingly small.
+
+Implicit methods require solving a system of equations at every step (using Newton's method), but they offer superior stability. Specifically, Implicit Euler is best for damping out noise in stiff systems, while Crank-Nicolson is superior for preserving the physics of oscillating systems.
+
+----------------------------------------------------------------------------------------
+
 **Notes for the Report and Plots for Exercise 18**
 
 Exercise 18 introduced and built on an automatic differentiation framework in C++

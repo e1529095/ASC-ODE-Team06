@@ -36,7 +36,8 @@ public:
 int main()
 {
   double tend = 20*M_PI;
-  int steps = 1000;
+  //int steps = 1000;
+  int steps = 200;
   double tau = tend/steps;
 
   auto rhs = std::make_shared<MassSpring>(1.0, 1.0);

@@ -46,8 +46,15 @@ namespace ASC_ode {
       auto ynew = std::make_shared<IdentityFunction>(rhs->dimX());
       m_equ = ynew - m_yold - m_tau * m_rhs;
     }
+    void DoStep(double tau, VectorView<double> y) override
+    {
+      m_yold->set(y);
+      m_tau->set(tau);
+      NewtonSolver(m_equ, y);
+    }
+  };
 
- class ImprovedEuler : public TimeStepper
+  class ImprovedEuler : public TimeStepper
   {
     Vector<> m_vecf;
     Vector<> m_ytilde;
@@ -63,15 +70,6 @@ namespace ASC_ode {
       y += tau * m_vecf;
     }
   };
-
-    void DoStep(double tau, VectorView<double> y) override
-    {
-      m_yold->set(y);
-      m_tau->set(tau);
-      NewtonSolver(m_equ, y);
-    }
-  };
-
 
   class CrankNicolson : public TimeStepper
   {
