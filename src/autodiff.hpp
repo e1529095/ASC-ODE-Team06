@@ -80,21 +80,79 @@ namespace ASC_ode
        return result;
    }
 
-   template <size_t N, typename T = double>
-   auto operator+ (T a, const AutoDiff<N, T>& b) { return AutoDiff<N, T>(a) + b; }
+  template <size_t N, typename T = double>
+  auto operator+ (T a, const AutoDiff<N, T>& b) { return AutoDiff<N, T>(a) + b; }
 
 
-   template <size_t N, typename T = double>
-   AutoDiff<N, T> operator* (const AutoDiff<N, T>& a, const AutoDiff<N, T>& b)
-   {
+
+  template <size_t N, typename T = double>
+  AutoDiff<N, T> operator* (const AutoDiff<N, T>& a, const AutoDiff<N, T>& b)
+  {
        AutoDiff<N, T> result(a.value() * b.value());
        for (size_t i = 0; i < N; i++)
           result.deriv()[i] = a.deriv()[i] * b.value() + a.value() * b.deriv()[i];
        return result;
-   }
+  }
+
+    //Added in minus operator, scalar multiplication and division
+
+    // Subtraction: a - b
+  template <size_t N, typename T>
+  AutoDiff<N,T> operator-(const AutoDiff<N,T>& a, const AutoDiff<N,T>& b)
+  {
+    AutoDiff<N,T> result(a.value() - b.value());
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = a.deriv()[i] - b.deriv()[i];
+    return result;
+  }
+
+  // Unary minus: -a
+  template <size_t N, typename T>
+  AutoDiff<N,T> operator-(const AutoDiff<N,T>& a)
+  {
+    AutoDiff<N,T> result(-a.value());
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = -a.deriv()[i];
+    return result;
+  }
+
+  // Division: a / b
+  template <size_t N, typename T>
+  AutoDiff<N,T> operator/(const AutoDiff<N,T>& a, const AutoDiff<N,T>& b)
+  {
+    T val_b = b.value();
+    AutoDiff<N,T> result(a.value() / val_b);
+
+    for (size_t i = 0; i < N; i++)
+    {
+        result.deriv()[i] =
+            (a.deriv()[i] * val_b - a.value() * b.deriv()[i]) / (val_b * val_b);
+    }
+    return result;
+  }
+
+
+  // Multiplication with scalar: a * s
+  template <size_t N, typename T>
+  AutoDiff<N,T> operator*(const AutoDiff<N,T>& a, const T& s)
+  {
+    AutoDiff<N,T> result(a.value() * s);
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = a.deriv()[i] * s;
+    return result;
+  }
+
+  // Multiplication with scalar: s * a
+  template <size_t N, typename T>
+  AutoDiff<N,T> operator*(const T& s, const AutoDiff<N,T>& a)
+  {
+    return a * s;  // reuse the implementation above
+  }
 
    using std::sin;
    using std::cos;
+   using std::exp;
+   using std::log;
 
    template <size_t N, typename T = double>
    AutoDiff<N, T> sin(const AutoDiff<N, T> &a)
@@ -104,6 +162,40 @@ namespace ASC_ode
            result.deriv()[i] = cos(a.value()) * a.deriv()[i];
        return result;
    }
+
+   // adding in the cosine, log and exponential operators
+
+   template <size_t N, typename T = double>
+   AutoDiff<N,T> cos(const AutoDiff<N,T>& a)
+   {
+    AutoDiff<N,T> result(cos(a.value()));
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = -sin(a.value()) * a.deriv()[i];
+    return result;
+    }
+
+    template <size_t N, typename T>
+    AutoDiff<N,T> exp(const AutoDiff<N,T>& a)
+    {
+    T val = exp(a.value());
+    AutoDiff<N,T> result(val);
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = val * a.deriv()[i];
+    return result;
+    } 
+
+    template <size_t N, typename T>
+    AutoDiff<N,T> log(const AutoDiff<N,T>& a)
+    {
+    AutoDiff<N,T> result(log(a.value()));
+    for (size_t i = 0; i < N; i++)
+        result.deriv()[i] = a.deriv()[i] / a.value();
+    return result;
+    }
+
+    
+
+
 
 
 } // namespace ASC_ode

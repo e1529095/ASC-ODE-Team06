@@ -54,6 +54,24 @@ We should also note that the Improved Euler method, by evaluating the derivative
 
 ----------------------------------------------------------------------------------------
 
+**Notes for the Report and Plots for Exercise 18**
+
+Exercise 18 introduced and built on an automatic differentiation framework in C++
+
+The following operators and functions were added to the autodiff class: Subtraction, division, scalar multiplication, cosine, log and exponential.
+
+
+The newly included features were applied it to:
+
+1. Legendre polynomials to obtain function values and derivatives simultaneously. The plot of Legendre-polynomials up to order 5, in the interval [-1,1] were created, including their derivatives
+
+2. A nonlinear ODE system (pendulum) to automatically generate the Jacobian used in implicit time integration.
+
+
+Th key takeaway for this exercise is that once the autodiff infrastructure (AutoDiff + operators) is in place, derivative information becomes easy for any function expressed in terms of the supported operations, significantly simplifying the implementation of nonlinear solvers and time-stepping schemes.
+
+----------------------------------------------------------------------------------------
+
 **Notes for the Report and Plots for Exercise 19**
 
 To complete the assignment, we added the file exercise19_runge_kutta.cpp to the project, in which we reproduced the Gaussian and Rado implementations for the Runge-Kutta methods. The calculation results are placed in the Results folder, and the plots are in the Plots folder.
