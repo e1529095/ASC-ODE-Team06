@@ -22,7 +22,7 @@ namespace ASC_ode {
     Vector<> m_k, m_y;
   public:
     ImplicitRungeKutta(std::shared_ptr<NonlinearFunction> rhs,
-      const Matrix<> &a, const Vector<> &b, const Vector<> &c) 
+      const Matrix<> &a, const Vector<> &b, const Vector<> &c)
     : TimeStepper(rhs), m_a(a), m_b(b), m_c(c),
     m_tau(std::make_shared<Parameter>(0.0)),
     m_stages(c.size()), m_n(rhs->dimX()), m_k(m_stages*m_n), m_y(m_stages*m_n)
@@ -40,7 +40,7 @@ namespace ASC_ode {
       m_yold->set(m_y);
 
       m_tau->set(tau);
-      m_k = 0.0;  
+      m_k = 0.0;
       NewtonSolver(m_equ, m_k);
 
       for (int j = 0; j < m_stages; j++)
@@ -183,14 +183,14 @@ auto ComputeABfromC (const Vector<> & c)
   int s = c.size();
   Matrix<> M(s, s);
   Vector<> tmp(s);
-  
+
   for (int i = 0; i < s; i++)
     for (int j = 0; j < s; j++)
       M(i,j) = std::pow(c(j), i);
 
   calcInverse(M);
   // M = LapackLU(M).inverse();
-  
+
   for (int i = 0; i < s; i++)
     tmp(i) = 1.0 / (i+1);
 
@@ -209,7 +209,7 @@ auto ComputeABfromC (const Vector<> & c)
   */
   return std::tuple { a, b };
 }
-  
+
 
 void GaussRadau (VectorView<> x, VectorView<> w)
 {

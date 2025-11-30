@@ -6,7 +6,7 @@
 #include <lapack_interface.hpp>
 
 namespace ASC_ode
-{  
+{
   void NewtonSolver (std::shared_ptr<NonlinearFunction> func, VectorView<double> x,
                      double tol = 1e-10, int maxsteps = 10,
                      std::function<void(int,double,VectorView<double>)> callback = nullptr)
@@ -28,7 +28,7 @@ namespace ASC_ode
         // LapackLU LU(fprime);
         // LU.solve(res);
         // x -= res;
- 
+
         if (callback)
           callback(i, err, x);
       }

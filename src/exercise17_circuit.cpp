@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream> 
+#include <fstream>
 #include <nonlinfunc.hpp>
 #include <timestepper.hpp>
 
@@ -9,14 +9,14 @@ using namespace ASC_ode;
 class Circuit : public NonlinearFunction
 {
 private:
-    double Resistance;       
-    double Capacity;      
-    double Voltage;     
+    double Resistance;
+    double Capacity;
+    double Voltage;
 
 public:
     Circuit(double r, double c, double vs) : Resistance(r), Capacity(c), Voltage(vs) {}
 
-    size_t dimX() const override { return 1; }   
+    size_t dimX() const override { return 1; }
     size_t dimF() const override { return 1; }
 
     void evaluate(VectorView<double> x, VectorView<double> f) const override
@@ -34,10 +34,10 @@ public:
 
 int main()
 {
-    double R = 1000.0;    
-    double C = 1e-6;      
-    double V = 5.0;     
-    double tend = 0.5;  
+    double R = 1000.0;
+    double C = 1e-6;
+    double V = 5.0;
+    double tend = 0.5;
     int steps = 100;
     double tau = tend / steps;
 

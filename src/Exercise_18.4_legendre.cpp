@@ -35,7 +35,7 @@ void LegendrePolynomials(int n, T x, std::vector<T>& P) {
 int main()
 {
   // EXERCISE 18.4 - added the legendre polynomial template for the autodiff
-   
+
   const int nmax = 5;    // highest order P_n
   const int npts = 201;  // number of x-points in [-1,1]
 

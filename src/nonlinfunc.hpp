@@ -26,7 +26,7 @@ namespace ASC_ode
   {
     size_t m_n;
   public:
-    IdentityFunction (size_t n) : m_n(n) { } 
+    IdentityFunction (size_t n) : m_n(n) { }
     size_t dimX() const override { return m_n; }
     size_t dimF() const override { return m_n; }
     void evaluate (VectorView<double> x, VectorView<double> f) const override
@@ -63,8 +63,8 @@ namespace ASC_ode
     }
   };
 
-  
-  
+
+
   class SumFunction : public NonlinearFunction
   {
     std::shared_ptr<NonlinearFunction> m_fa, m_fb;
@@ -106,7 +106,7 @@ namespace ASC_ode
     return std::make_shared<SumFunction>(fa, fb, 1, 1);
   }
 
-  class Parameter 
+  class Parameter
   {
     double m_value;
   public:
@@ -139,7 +139,7 @@ namespace ASC_ode
     }
   };
 
-  inline auto operator* (std::shared_ptr<Parameter> parama, 
+  inline auto operator* (std::shared_ptr<Parameter> parama,
                          std::shared_ptr<NonlinearFunction> f)
   {
     return std::make_shared<ScaleFunction>(f, parama);
@@ -148,7 +148,7 @@ namespace ASC_ode
   inline auto operator* (double a, std::shared_ptr<NonlinearFunction> f)
   {
     return std::make_shared<Parameter>(a) * f;
-  } 
+  }
 
 
 
@@ -184,13 +184,13 @@ namespace ASC_ode
       df = jaca*jacb;
     }
   };
-  
-  
+
+
   inline auto Compose (std::shared_ptr<NonlinearFunction> fa, std::shared_ptr<NonlinearFunction> fb)
   {
     return make_shared<ComposeFunction> (fa, fb);
   }
-  
+
   class EmbedFunction : public NonlinearFunction
   {
     std::shared_ptr<NonlinearFunction> m_fa;
@@ -220,12 +220,12 @@ namespace ASC_ode
     }
   };
 
-  
+
   class Projector : public NonlinearFunction
   {
     size_t m_size, m_first, m_next;
   public:
-    Projector (size_t size, 
+    Projector (size_t size,
                size_t first, size_t next)
       : m_size(size), m_first(first), m_next(next) { }
 
@@ -243,7 +243,7 @@ namespace ASC_ode
     }
   };
 
-  
+
   class MultipleFunc : public NonlinearFunction
   {
     std::shared_ptr<NonlinearFunction> func;
@@ -256,7 +256,7 @@ namespace ASC_ode
       fdimf = func->dimF();
     }
 
-    virtual size_t dimX() const override { return num * fdimx; } 
+    virtual size_t dimX() const override { return num * fdimx; }
     virtual size_t dimF() const override{ return num * fdimf; }
     virtual void evaluate (VectorView<double> x, VectorView<double> f) const override
     {
@@ -282,7 +282,7 @@ namespace ASC_ode
     MatVecFunc (Matrix<> a, size_t n)
       : m_a(a), m_n(n) { }
 
-    virtual size_t dimX() const override { return m_n*m_a.rows(); } 
+    virtual size_t dimX() const override { return m_n*m_a.rows(); }
     virtual size_t dimF() const override { return m_n*m_a.cols(); }
     virtual void evaluate (VectorView<double> x, VectorView<double> f) const override
     {

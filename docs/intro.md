@@ -20,7 +20,7 @@ double tau = tend/steps;
 
 Vector<> y = { 1, 0 };  // initial conditions
 shared_ptr<NonlinearFunction> rhs = std::make_shared<MassSpring>(mass, stiffness);
-  
+
 ExplicitEuler stepper(rhs);
 
 std::cout << 0.0 << "  " << y(0) << " " << y(1) << std::endl;
@@ -29,7 +29,7 @@ for (int i = 0; i < steps; i++)
      stepper.DoStep(tau, y);
      std::cout << (i+1) * tau << "  " << y(0) << " " << y(1) << std::endl;
   }
-```    
+```
 
 The result of this simulation in phase space is shown here:
 
@@ -55,12 +55,7 @@ To configure and build some tests do
     cd build
     cmake ..
     make
-    
+
 
 ## Available time-stepping methods are
 ...
-
-
-
-
-   

@@ -16,7 +16,7 @@ namespace ASC_ode {
 
     size_t dimX() const override { return 2; }
     size_t dimF() const override { return 2; }
-    
+
     void evaluate (VectorView<double> x, VectorView<double> f) const override
     {
         T_evaluate<double>(x, f);

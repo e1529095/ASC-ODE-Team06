@@ -46,7 +46,7 @@ std::ostream & operator<< (std::ostream & ost, const Connector & con)
 class Spring
 {
 public:
-  double length;  
+  double length;
   double stiffness;
   std::array<Connector,2> connectors;
 };
@@ -73,15 +73,15 @@ public:
     m_masses.push_back (m);
     return { Connector::MASS, m_masses.size()-1 };
   }
-  
-  size_t addSpring (Spring s) 
+
+  size_t addSpring (Spring s)
   {
-    m_springs.push_back (s); 
+    m_springs.push_back (s);
     return m_springs.size()-1;
   }
 
-  auto & fixes() { return m_fixes; } 
-  auto & masses() { return m_masses; } 
+  auto & fixes() { return m_fixes; }
+  auto & masses() { return m_masses; }
   auto & springs() { return m_springs; }
 
   void getState (VectorView<> values, VectorView<> dvalues, VectorView<> ddvalues)
@@ -177,7 +177,7 @@ public:
     for (size_t i = 0; i < mss.masses().size(); i++)
       fmat.row(i) *= 1.0/mss.masses()[i].mass;
   }
-  
+
   virtual void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override
   {
     // TODO: exact differentiation
@@ -194,7 +194,7 @@ public:
         df.col(i) = 1/(2*eps) * (fr-fl);
       }
   }
-  
+
 };
 
 #endif

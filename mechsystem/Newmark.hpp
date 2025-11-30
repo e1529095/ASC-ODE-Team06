@@ -5,16 +5,16 @@
 
 
 
-  
-  
+
+
   // Newmark and generalized alpha:
   // https://miaodi.github.io/finite%20element%20method/newmark-generalized/
-  
+
   // Newmark method for  mass*d^2x/dt^2 = rhs
   void SolveODE_Newmark(double tend, int steps,
                         VectorView<double> x, VectorView<double> dx,
-                        std::shared_ptr<NonlinearFunction> rhs,   
-                        std::shared_ptr<NonlinearFunction> mass,  
+                        std::shared_ptr<NonlinearFunction> rhs,
+                        std::shared_ptr<NonlinearFunction> mass,
                         std::function<void(double,VectorView<double>)> callback = nullptr)
   {
     double dt = tend/steps;
@@ -31,12 +31,12 @@
 
     auto anew = std::make_shared<IdentityFunction>(a.size());
     auto vnew = vold + dt*((1-gamma)*aold+gamma*anew);
-    auto xnew = xold + dt*vold + dt*dt/2 * ((1-2*beta)*aold+2*beta*anew);    
+    auto xnew = xold + dt*vold + dt*dt/2 * ((1-2*beta)*aold+2*beta*anew);
 
     auto equ = Compose(mass, anew) - Compose(rhs, xnew);
 
     double t = 0;
-    for (int i = 0; i < steps; i++)            
+    for (int i = 0; i < steps; i++)
       {
         NewtonSolver (equ, a);
         xnew -> evaluate (a, x);
@@ -57,8 +57,8 @@
   // Generalized alpha method for M d^2x/dt^2 = rhs
   void SolveODE_Alpha (double tend, int steps, double rhoinf,
                        VectorView<double> x, VectorView<double> dx, VectorView<double> ddx,
-                       std::shared_ptr<NonlinearFunction> rhs,   
-                       std::shared_ptr<NonlinearFunction> mass,  
+                       std::shared_ptr<NonlinearFunction> rhs,
+                       std::shared_ptr<NonlinearFunction> mass,
                        std::function<void(double,VectorView<double>)> callback = nullptr)
   {
     double dt = tend/steps;
@@ -77,7 +77,7 @@
 
     auto anew = std::make_shared<IdentityFunction>(a.size());
     auto vnew = vold + dt*((1-gamma)*aold+gamma*anew);
-    auto xnew = xold + dt*vold + dt*dt/2 * ((1-2*beta)*aold+2*beta*anew);    
+    auto xnew = xold + dt*vold + dt*dt/2 * ((1-2*beta)*aold+2*beta*anew);
 
     // auto equ = Compose(mass, (1-alpham)*anew+alpham*aold) - Compose(rhs, (1-alphaf)*xnew+alphaf*xold);
     auto equ = Compose(mass, (1-alpham)*anew+alpham*aold) - (1-alphaf)*Compose(rhs,xnew) - alphaf*Compose(rhs, xold);

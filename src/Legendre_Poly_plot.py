@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# load the data 
+# load the data
 data = np.loadtxt("legendre_ad.txt")
 
 x = data[:, 0]
@@ -43,4 +43,3 @@ plt.grid()
 plt.legend()
 
 plt.show()
-

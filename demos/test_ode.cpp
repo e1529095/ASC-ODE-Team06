@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream> 
+#include <fstream>
 
 #include <nonlinfunc.hpp>
 #include <timestepper.hpp>
@@ -19,13 +19,13 @@ public:
 
   size_t dimX() const override { return 2; }
   size_t dimF() const override { return 2; }
-  
+
   void evaluate (VectorView<double> x, VectorView<double> f) const override
   {
     f(0) = x(1);
     f(1) = -stiffness/mass*x(0);
   }
-  
+
   void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override
   {
     df = 0.0;
@@ -53,7 +53,7 @@ int main()
   cout << "Radau = " << Radau << ", weight = " << RadauWeight <<  endl;
         Vector<> Gauss2c(2), Gauss3c(3);
 */
- 
+
 
   // ExplicitEuler stepper(rhs);
   // ImplicitEuler stepper(rhs);
@@ -75,7 +75,7 @@ int main()
   ImplicitRungeKutta stepper(rhs, a, b, c);
   */
 
-  /* 
+  /*
   // arbitrary order Radau
   int stages = 5;
   Vector<> c(stages), b1(stages);

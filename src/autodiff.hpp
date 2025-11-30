@@ -1,17 +1,17 @@
 #ifndef AUTODIFF_HPP
 #define AUTODIFF_HPP
 
-#include <cstddef> 
-#include <ostream> 
-#include <cmath>   
-#include <array>  
+#include <cstddef>
+#include <ostream>
+#include <cmath>
+#include <array>
 
 
 namespace ASC_ode
 {
 
   template <size_t N, typename T = double>
-  class Variable 
+  class Variable
   {
     private:
       T m_val;
@@ -21,7 +21,7 @@ namespace ASC_ode
   };
 
   template <typename T = double>
-  auto derivative (T v, size_t /*index*/) { return T(0); } 
+  auto derivative (T v, size_t /*index*/) { return T(0); }
 
 
   template <size_t N, typename T = double>
@@ -30,16 +30,16 @@ namespace ASC_ode
   private:
     T m_val;
     std::array<T, N> m_deriv;
-  public: 
+  public:
     AutoDiff () : m_val(0), m_deriv{} {}
-    AutoDiff (T v) : m_val(v), m_deriv{} 
+    AutoDiff (T v) : m_val(v), m_deriv{}
     {
       for (size_t i = 0; i < N; i++)
         m_deriv[i] = derivative(v, i);
     }
-    
+
     template <size_t I>
-    AutoDiff (Variable<I, T> var) : m_val(var.value()), m_deriv{} 
+    AutoDiff (Variable<I, T> var) : m_val(var.value()), m_deriv{}
     {
       m_deriv[I] = 1.0;
     }
@@ -51,7 +51,7 @@ namespace ASC_ode
 
 
   template <size_t N, typename T = double>
-  auto derivative (AutoDiff<N, T> v, size_t index) 
+  auto derivative (AutoDiff<N, T> v, size_t index)
   {
     return v.deriv()[index];
   }
@@ -182,7 +182,7 @@ namespace ASC_ode
     for (size_t i = 0; i < N; i++)
         result.deriv()[i] = val * a.deriv()[i];
     return result;
-    } 
+    }
 
     template <size_t N, typename T>
     AutoDiff<N,T> log(const AutoDiff<N,T>& a)
@@ -193,7 +193,7 @@ namespace ASC_ode
     return result;
     }
 
-    
+
 
 
 

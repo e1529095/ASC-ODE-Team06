@@ -54,4 +54,3 @@ parse:
     - linkify
     - colon_fence
   myst_dmath_double_inline: true
-  
