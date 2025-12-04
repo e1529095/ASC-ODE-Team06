@@ -76,7 +76,7 @@ This illustrates why Crank-Nicolson is the standard for conservative problems wh
 
 **Notes for the Report and Plots for Exercise 17.4.2**
 
-In the exercise 17.4.2 we did the RC Circuit simulation, and highlights the concept of stiffness in ODEs. 
+In the exercise 17.4.2 we did the RC Circuit simulation, and highlights the concept of stiffness in ODEs.
 
 We implemented the methods in exercise17_circuit.cpp file and put results and plots in the appropriate folders.
 
