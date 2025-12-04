@@ -41,9 +41,6 @@ public:
 // ------------------ Function for running a simulation
 void RunSimulation(string filename, int stages, bool useRadau, int steps)
 {
-  cout << "Running: " << filename << " (Stages: " << stages << ", Type: "
-       << (useRadau ? "Radau IIA" : "Gauss-Legendre") << ")" << endl;
-
   // Setting up time and model
   double tend = 4 * M_PI;
   // int steps = 100;
@@ -73,14 +70,13 @@ void RunSimulation(string filename, int stages, bool useRadau, int steps)
   // Saving to file
   std::ofstream outfile(filename);
   outfile << "steps" << "\t" << "y(0)" << "\t" << "y(1)" << std::endl;
-  outfile << 0.0 << "  " << y(0) << " " << y(1) << std::endl;
+  outfile << 0.0 << "\t" << y(0) << "\t" << y(1) << std::endl;
 
   for (int i = 0; i < steps; i++)
   {
     stepper.DoStep(tau, y);
     outfile << (i + 1) * tau << "\t" << y(0) << "\t" << y(1) << std::endl;
   }
-  cout << "  -> Saved to " << filename << endl;
 }
 
 // ------------------ Main procedure (Running 4 simulations one after another)
