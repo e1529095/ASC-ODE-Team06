@@ -22,11 +22,11 @@ install (
 )
 
 # Demos
-add_executable(test_ode demos/test_ode.cpp)
-target_link_libraries (test_ode PUBLIC nanoblas)
+#add_executable(test_ode demos/test_ode.cpp)
+#target_link_libraries (test_ode PUBLIC nanoblas)
 
-add_executable(demo_autodiff demos/demo_autodiff.cpp)
-target_link_libraries (demo_autodiff PUBLIC nanoblas)
+#add_executable(demo_autodiff demos/demo_autodiff.cpp)
+#target_link_libraries (demo_autodiff PUBLIC nanoblas)
 
 # Exercise 17
 add_executable(massspring src/exercise17_massspring.cpp)

@@ -1,0 +1,21 @@
+version: 1
+project:
+  title: ASC-ODE
+  authors:
+    - name: Team 6
+  exclude:
+    - '**/.venv/*'
+  github: e1529095/ASC-ODE-Team06
+  toc:
+    - file: intro.md
+    - title: Report
+      children:
+        - file: chapters/exercise17.md
+        - file: chapters/exercise18.md
+        - file: chapters/exercise19.md
+        - file: chapters/exercise20.md
+site:
+  options:
+    logo: assets/img/logo.png
+    folders: true
+  template: book-theme

@@ -1,0 +1,14 @@
+[project]
+name = "asc-ode-team06"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "jupyter-book>=2.0.2",
+    "loguru>=0.7.3",
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.5",
+    "pandas>=2.3.3",
+    "pybind11>=3.0.1",
+]
