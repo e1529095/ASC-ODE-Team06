@@ -53,3 +53,6 @@ target_link_libraries(crane PUBLIC nanoblas)
 
 add_executable(spinning_top src/exercise20_spinning_top.cpp)
 target_link_libraries(spinning_top PUBLIC nanoblas)
+
+add_executable(double_pendulum src/exercise20_double_pendulum.cpp)
+target_link_libraries(double_pendulum PUBLIC nanoblas)
