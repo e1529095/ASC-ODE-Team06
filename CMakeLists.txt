@@ -4,7 +4,7 @@ project(ASC_ode)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-include_directories(src nanoblas/src)
+include_directories(src nanoblas/src mechsystem)
 
 add_subdirectory(nanoblas)
 add_subdirectory(mechsystem)
@@ -43,3 +43,7 @@ add_executable(pendulum src/exercise18_pendulum.cpp)
 # Exercise 19
 add_executable(runge_kutta src/exercise19_runge_kutta.cpp)
 target_link_libraries(runge_kutta PUBLIC nanoblas)
+
+# Exercise 20
+add_executable(chain src/exercise20_chain.cpp)
+target_link_libraries(chain PUBLIC nanoblas)
