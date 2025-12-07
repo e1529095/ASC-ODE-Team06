@@ -61,6 +61,11 @@ def animate_top(data):
         return line_rim, line_spokes, time_text
 
     ani = animation.FuncAnimation(fig, update, frames=frames, init_func=init, blit=True, interval=20)
+    
+    print("Saving to spinning_top.gif...")
+    ani.save('spinning_top.gif', writer='pillow', fps=30)
+    print("Animation saved!")
+    
     plt.show()
 
 if __name__ == "__main__":

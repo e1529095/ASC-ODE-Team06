@@ -123,6 +123,10 @@ def animate_system(data): # Creates an animation of the chain
     ani = animation.FuncAnimation(fig, update, frames=frames,
                                   init_func=init, blit=True, interval=30)
     
+    print("Saving to chain.gif...")
+    ani.save('chain.gif', writer='pillow', fps=30)
+    print("Animation saved!")
+
     plt.show()
 
 if __name__ == "__main__":

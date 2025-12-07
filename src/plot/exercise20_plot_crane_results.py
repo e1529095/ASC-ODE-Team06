@@ -146,6 +146,11 @@ def animate_system(data): # Creates an animation of the vibrating crane
                                   init_func=init, blit=True, interval=20)
     
     plt.legend(loc='lower right')
+
+    print("Saving to crane.gif...")
+    ani.save('crane.gif', writer='pillow', fps=30)
+    print("Animation saved!")
+
     plt.show()
 
 if __name__ == "__main__":
