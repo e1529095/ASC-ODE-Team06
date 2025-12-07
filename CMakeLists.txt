@@ -47,3 +47,6 @@ target_link_libraries(runge_kutta PUBLIC nanoblas)
 # Exercise 20
 add_executable(chain src/exercise20_chain.cpp)
 target_link_libraries(chain PUBLIC nanoblas)
+
+add_executable(crane src/exercise20_crane.cpp)
+target_link_libraries(crane PUBLIC nanoblas)
