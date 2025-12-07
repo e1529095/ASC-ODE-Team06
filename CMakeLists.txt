@@ -50,3 +50,6 @@ target_link_libraries(chain PUBLIC nanoblas)
 
 add_executable(crane src/exercise20_crane.cpp)
 target_link_libraries(crane PUBLIC nanoblas)
+
+add_executable(spinning_top src/exercise20_spinning_top.cpp)
+target_link_libraries(spinning_top PUBLIC nanoblas)
