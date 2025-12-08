@@ -107,7 +107,7 @@ Source Code: src/exercise20_double_pendulum.cpp
 
 Run Simulation:
 
-`./bin/pendulum_dae`
+`./bin/double_pendulum`
 
 As an output, it generates double_pendulum_simulation.tsv containing coordinates and Lagrange multipliers.
 
@@ -118,5 +118,3 @@ Visualization:
 As an output, it plots the evolution of tension forces Lambda in the rods and the animation of the chaotic motion double_pendulum.gif.
 
 ![spinning_top.gif animation](https://github.com/e1529095/ASC-ODE-Team06/blob/main/docs/assets/exercise20/plots/double_pendulum.gif "Double pendulum animation example")
-
-
