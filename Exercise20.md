@@ -25,18 +25,19 @@ Python Environment (for visualization):
 1. Clone the repository and navigate to the project root.
 2. Create a build directory and compile the executables:
 
-`mkdir build
+```
+mkdir build
 cd build
 cmake ..
-make`
-
+cmake --build .
+```
 This will generate the following executables in the bin/ directory:
-
-`chain
+```
+chain
 crane
 spinning_top
-double_pendulum`
-
+double_pendulum
+```
 ## Simulation Modules
 
 ### 1. Mass-Spring Chain
