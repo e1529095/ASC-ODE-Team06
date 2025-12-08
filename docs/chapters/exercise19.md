@@ -34,22 +34,24 @@ By reducing the number of steps to $25$, we can visually detect at least a
 minimal difference in the results of these highly accurate methods from the
 ideal analytical solution.
 
-```{figure} ./../assets/exercise19/plot/E19_Energy_Conservation_Check_25_steps.png
+
+
+```{figure} ./../assets/exercise19/plots/E19_Energy_Conservation_Check_25_steps.png
 :label: energy_conservative_25
 Energy Conservation check with 25 steps.
 ```
 
-```{figure} ./../assets/exercise19/plot/E19_Energy_Conservation_Check_100_steps.png
+```{figure} ./../assets/exercise19/plots/E19_Energy_Conservation_Check_100_steps.png
 :label: energy_conservative_100
 Energy Conservation check with 100 steps.
 ```
 
-```{figure} ./../assets/exercise19/plot/E19_Phase_Space_Comparison_25_steps.png
+```{figure} ./../assets/exercise19/plots/E19_Phase_Space_Comparison_25_steps.png
 :label: phase_space_25
 Phase Space comparison with 25 steps.
 ```
 
-```{figure} ./../assets/exercise19/plot/E19_Phase_Space_Comparison_100_steps.png
+```{figure} ./../assets/exercise19/plots/E19_Phase_Space_Comparison_100_steps.png
 :label: phase_space_100
 Phase Space comparison with 100 steps.
 ```

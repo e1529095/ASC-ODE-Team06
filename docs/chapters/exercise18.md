@@ -25,12 +25,12 @@ information becomes easy for any function expressed in terms of the supported
 operations, significantly simplifying the implementation of nonlinear solvers
 and time-stepping schemes.
 
-```{figure} ./../assets/exercise18/plot/Legendre_poly_plots.png
+```{figure} ./../assets/exercise18/plots/Legendre_poly_plots.png
 :label: normal_plot
 Legendre Poly Plot
 ```
 
-```{figure} ./../assets/exercise18/plot/Legendre_poly_plots_deriv_plots.png
+```{figure} ./../assets/exercise18/plots/Legendre_poly_plots_deriv_plots.png
 :label: deriv_plot
 Legendre Poly Plot
 ```

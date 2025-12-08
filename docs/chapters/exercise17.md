@@ -45,6 +45,46 @@ but still exhibits distortion over long periods. With larger time-steps
 (e.g., 100 steps), the method becomes unstable, and the phase plot spirals
 outward rapidly.
 
+##### 100 Steps & End Time 4$\pi$
+```{figure} ./../assets/exercise17/plots/EEuler_Phase_4pi_100_step.png
+:label: explicit_euler_phase_4pi_100
+Mass-Spring System Phase Evolution (Explicit Euler, Steps = 100, End time = 4$\pi$)
+```
+```{figure} ./../assets/exercise17/plots/EEuler_Time_4pi_100_step.png
+:label: explicit_euler_time_4pi_100
+Mass-Spring System Time Evolution (Explicit Euler, Steps = 100, End time = 4$\pi$)
+```
+
+##### 500 Steps & End Time 4$\pi$
+```{figure} ./../assets/exercise17/plots/EEuler_Phase_4pi_500_step.png
+:label: explicit_euler_phase_4pi_500
+Mass-Spring System Phase Evolution (Explicit Euler, Steps = 500, End time = 4$\pi$)
+```
+```{figure} ./../assets/exercise17/plots/EEuler_Time_4pi_500_step.png
+:label: explicit_euler_time_4pi_500
+Mass-Spring System Time Evolution (Explicit Euler, Steps = 500, End time = 4$\pi$)
+```
+
+##### 1000 Steps & End Time 4$\pi$
+```{figure} ./../assets/exercise17/plots/EEuler_Phase_4pi_1000_step.png
+:label: explicit_euler_phase_4pi_1000
+Mass-Spring System Phase Evolution (Explicit Euler, Steps = 1000, End time = 4$\pi$)
+```
+```{figure} ./../assets/exercise17/plots/EEuler_Time_4pi_1000_step.png
+:label: explicit_euler_time_4pi_1000
+Mass-Spring System Time Evolution (Explicit Euler, Steps = 1000, End time = 4$\pi$)
+```
+
+##### 1000 Steps & End Time 8$\pi$
+```{figure} ./../assets/exercise17/plots/EEuler_Phase_8pi_1000_step.png
+:label: explicit_euler_phase_8pi_1000
+Mass-Spring System Phase Evolution (Explicit Euler, Steps = 1000, End time = 8$\pi$)
+```
+```{figure} ./../assets/exercise17/plots/EEuler_Time_8pi_1000_step.png
+:label: explicit_euler_time_8pi_1000
+Mass-Spring System Time Evolution (Explicit Euler, Steps = 1000, End time = 8$\pi$)
+```
+
 #### Improved Euler Analysis
 The **Improved Euler** method demonstrated superior performance:
 1. Even with fewer time-steps, the method produced a nearly perfect circular
@@ -52,6 +92,15 @@ phase plot, which aligns with the theoretical conservation of energy for a
 harmonic oscillator.
 2. The oscillations remained stable over the simulation time, avoiding the
 spiraling artifact seen in the standard Euler method.
+
+```{figure} ./../assets/exercise17/plots/Improved_euler_phase_100_steps.png
+:label: improved_euler_phase_steps_100
+Mass-Spring System Phase Evolution (Improved Euler, Steps = 100, End time = 4$\pi$)
+```
+```{figure} ./../assets/exercise17/plots/Improved_euler_Time_100_steps.png
+:label: improved_euler_time_steps_100
+Mass-Spring System Time Evolution (Improved Euler, Steps = 100, End time = 4$\pi$)
+```
 
 ### Conclusion
 The comparison highlights the importance of choosing an appropriate integration
@@ -72,6 +121,15 @@ We implemented the methods in
 [`exercise17_massspring.cpp`](https://github.com/e1529095/ASC-ODE-Team06/blob/main/src/exercise17_massspring.cpp).
 
 ### Results and discussion
+```{figure} ./../assets/exercise17/plots/E17_Mass_spring_steps_200.png
+:label: mass_spring_steps_200
+Mass Spring Phase Portrait (Steps = 200)
+```
+```{figure} ./../assets/exercise17/plots/E17_Mass_spring_steps_1000.png
+:label: mass_spring_steps_1000
+Mass Spring Phase Portrait (Steps = 1000)
+```
+
 The **Improved Euler** method (red line), being an explicit scheme, exhibits a
 lack of long-term stability for this oscillatory system. As seen in the phase
 portraits (especially with steps = 200), the solution spirals outward and the
@@ -104,7 +162,8 @@ high frequencies.
 In this exercise we did the RC Circuit simulation, and highlights the
 concept of stiffness in ODEs.
 
-We implemented the methods in [`exercise17_circuit.cpp`](https://github.com/e1529095/ASC-ODE-Team06/blob/main/src/exercise17_circuit.cpp).
+We implemented the methods in
+[`exercise17_circuit.cpp`](https://github.com/e1529095/ASC-ODE-Team06/blob/main/src/exercise17_circuit.cpp).
 
 ### Results and discussion
 With the chosen parameters (`R = 1000`, `C = 10` to the power of `-6`), the
@@ -113,6 +172,16 @@ relative to this reaction time, the **Improved Euler** method fails
 catastrophically, with the voltage crashing to negative infinity. This
 _explosion_ occurs because the explicit method's stability domain was violated
 by the large step size.
+
+```{figure} ./../assets/exercise17/plots/E17_RC_Circuit_steps_80.png
+:label: rc_circuit_steps_80
+RC-Circuit: Capacitor Voltage vs. Time (Steps = 80)
+```
+
+```{figure} ./../assets/exercise17/plots/E17_RC_Circuit_steps_100.png
+:label: rc_circuit_steps_100
+RC-Circuit: Capacitor Voltage vs. Time (Steps = 100)
+```
 
 ## Summary for exercise 17
 In summary, these exercises confirm that while explicit methods like
